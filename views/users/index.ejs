@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>What I'm Listening to</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <div class="navbar">
+    <nav>
+        <a href>What I'm Listening to</a>
+        <!-- Add login UI here -->
+        <ul>
+          <li>
+          <% if (user) { %>
+            <a href="/logout">Log Out</a>
+          <% } else { %>
+            <a href="/auth/google">Login with Google</a>
+          <% } %>
+          </li>
+        </ul>
+    </nav>
+  </div>
+      <h2>Users</h2>
+      <form action="/users" method="GET">
+          <!-- search -->
+          <div class="input-field">
+            <input id="search" type="search" name="name" placeholder="search name" value="<%= name %>" autocomplete="off">
+          </div>
+        <div>
+          <p>
+            <label for="sort-name">
+              <input name="sort" type="radio" id="sort-name" value="name" class="with-gap"
+                <%= sortKey === 'name' ? 'checked' : '' %> >
+              <span>Sort by Name</span>
+            </label>
+          </p>
+        </div>
+      </form>
+      <div id="users">
+        <% users.forEach(function(user) { %>
+              <div>
+                  <% if (user.avatar) { %>
+                    <img src="<%= user.avatar %>" alt="avatar" width="50">
+                  <% } else { %>
+                    <i class="small material-icons">perm_identity</i>
+                  <% } %>
+                  <span class="user-name"><%= user.name %></span>
+                </span>
+              </div>
+              <ul class="songlist">
+                <% user.songs.forEach(function(song) { %>
+                  <li><%- song.text %></li>
+                <% }) %>
+              </ul>
+              <!-- Add Dynamic UI form below this line -->
+              <% if (user._id.equals(user && user._id)) { %>
+                  <form action="/songs" method="POST">
+                    <input type="text" name="text" class="white-text">
+                    <button type="submit" class="btn white-text">Add Song</button>
+                  </form>
+              <% } %>
+        <% }) %>
+      </div>
+</body>
+
+</html>
