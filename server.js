@@ -18,8 +18,8 @@ require('./config/database');
 require('./config/passport');
 
 // require our routes
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRoutes = require('./routes/index');
+var listenersRoutes = require('./routes/listeners');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,8 +38,8 @@ app.use(session( {
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', indexRoutes);
+app.use('/listeners', listenersRoutes);
 
 app.use(function (req, res, next) {
   res.locals.user = req.user;
