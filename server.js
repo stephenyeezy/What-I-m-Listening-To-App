@@ -4,6 +4,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
+var methodOverride = require('method-override');
 
 // load the env vars
 require('dotenv').config();
@@ -36,6 +37,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(methodOverride('_method'));
 
 // Custom middleware that passes req.user to all templates
 app.use(function(req, res, next) {

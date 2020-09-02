@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Song = require('../models/user');
 
 module.exports = {
   index,
@@ -25,5 +26,7 @@ function addSong(req, res, next) {
 }
 
 function delSong(req, res, next) {
-
+  Song.findByIdAndDelete(req.params.songs, function(err) {
+    res.redirect('/users');
+  });
 }

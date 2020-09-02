@@ -50,7 +50,11 @@
               </div>
               <ul class="songlist">
                 <% user.songs.forEach(function(song) { %>
-                  <li><%- song.text %></li>
+                  <li><%- song.text %>
+                    <form action="/songs/<%=song._id%>?_method=DELETE" method="POST">
+                      <button class="red-button" type="submit">X</button>
+                    </form>
+                  </li>
                 <% }) %>
               </ul>
               <!-- Add Dynamic UI form below this line -->
