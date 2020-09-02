@@ -50,18 +50,18 @@
               </div>
               <ul class="songlist">
                 <% user.songs.forEach(function(song) { %>
-                  <li><%- song.text %>
+                  <li><%= song.text %>
                     <form action="/songs/<%=song._id%>?_method=DELETE" method="POST">
-                      <button class="red-button" type="submit">X</button>
+                      <button type="submit">Delete</button>
                     </form>
                   </li>
                 <% }) %>
               </ul>
               <!-- Add Dynamic UI form below this line -->
               <% if (user._id.equals(user && user._id)) { %>
-                  <form action="/songs" method="POST">
-                    <input type="text" name="text" class="white-text">
-                    <button type="submit" class="btn white-text">Add Song</button>
+                  <form action="users/<%= user._id %>/songs" method="POST">
+                    <input type="text" name="text">
+                    <button type="submit">Add Song</button>
                   </form>
               <% } %>
         <% }) %>

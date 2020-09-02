@@ -18,15 +18,39 @@ function index(req, res, next) {
   });
 }
 
-function addSong(req, res, next) {
-  req.user.songs.push(req.body);
-  req.user.save(function(err) {
-    res.redirect('/users');
+// function addSong(req, res, next) {
+//   const song = new Song(req.body.song)
+//   console.log('look here', song)
+//   song.save(function(err) {
+//     if (err) return next(err);
+//     res.redirect('/users');
+//   });
+// }
+
+// function delSong(req, res) {
+//   Song.findByIdAndDelete(req.params.id, function(err) {
+//     res.redirect('/users');
+//   });
+// }
+
+function addSong(req, res) {
+  User.findById(req.params.id, function(err, user) {
+    const song = req.body;
+    //song.description = song.description.trim();
+    console.log('here', song)
+    user.songs.push(song)
+    user.save(function(err) {
+      res.redirect('/users');
+    });
   });
 }
 
-function delSong(req, res, next) {
-  Song.findByIdAndDelete(req.params.songs, function(err) {
-    res.redirect('/users');
+function delSong(req, res) {
+  User.findOne({'songs._id': req.params.id}, function(err, user) {
+    const songSubdoc = user.songs.id(req.params.id);
+    songSubdoc.remove();
+    user.save(function(err) {
+      res.redirect('/users');
+    });
   });
 }

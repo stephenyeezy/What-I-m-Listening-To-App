@@ -3,7 +3,7 @@ var usersCtrl = require('../controllers/users');
 
 router.get('/users', usersCtrl.index);
 
-router.post('/songs', isLoggedIn, usersCtrl.addSong);
+router.post('/users/:id/songs', isLoggedIn, usersCtrl.addSong);
 
 router.delete('/songs/:id', isLoggedIn, usersCtrl.delSong);
 
