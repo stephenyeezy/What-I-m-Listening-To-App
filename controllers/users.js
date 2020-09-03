@@ -22,6 +22,7 @@ function index(req, res, next) {
 function addSong(req, res) {
   User.findById(req.params.id, function(err, user) {
     const song = req.body;
+    if (!user._id.equals(req.user.id)) return res.redirect('/users')
     console.log('here', song)
     user.songs.push(song)
     user.save(function(err) {
