@@ -22,7 +22,6 @@ function index(req, res, next) {
 function addSong(req, res) {
   User.findById(req.params.id, function(err, user) {
     const song = req.body;
-    //song.description = song.description.trim();
     console.log('here', song)
     user.songs.push(song)
     user.save(function(err) {
@@ -34,6 +33,7 @@ function addSong(req, res) {
 function delSong(req, res) {
   User.findOne({'songs._id': req.params.id}, function(err, user) {
     const songSubdoc = user.songs.id(req.params.id);
+    if (!user._id.equals(req.user.id)) return res.redirect('/users')
     songSubdoc.remove();
     user.save(function(err) {
       res.redirect('/users');
@@ -44,6 +44,7 @@ function delSong(req, res) {
 function update(req, res) {
   User.findOne({'songs._id': req.params.id}, function(err, user) {
     const songSubdoc = user.songs.id(req.params.id);
+    if (!user._id.equals(req.user.id)) return res.redirect('/users')
     songSubdoc.text = req.body.text;
     user.save(function(err) {
       res.redirect('/users');

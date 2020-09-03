@@ -1,5 +1,24 @@
 body {
   font: 14px "Helvetica", Arial, sans-serif;
+  display: block;
+}
+
+.header {
+  font-size: 50px;
+  padding: 0;
+}
+
+.text-column {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 35px;
+}
+
+.share {
+  color: red;
+}
+
+.discover {
+  color: red;
 }
 
 .login {
@@ -19,4 +38,15 @@ body {
   height: 20px;
   width: 20px;
   vertical-align: middle;
+}
+
+.main-icon {
+  height: 60px;
+  width: 60px;
+  vertical-align: middle;
+}
+
+#users {
+  border: 10px solid black;
+  padding: 10px;
 }
