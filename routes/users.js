@@ -7,6 +7,8 @@ router.post('/users/:id/songs', isLoggedIn, usersCtrl.addSong);
 
 router.delete('/songs/:id', isLoggedIn, usersCtrl.delSong);
 
+router.put('/songs/:id', isLoggedIn, usersCtrl.update);
+
 function isLoggedIn(req, res, next) {
   if ( req.isAuthenticated() ) return next();
   res.redirect('/auth/google');

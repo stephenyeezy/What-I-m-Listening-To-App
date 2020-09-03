@@ -4,7 +4,8 @@ const Song = require('../models/user');
 module.exports = {
   index,
   addSong,
-  delSong
+  delSong,
+  update
 };
 
 function index(req, res, next) {
@@ -17,21 +18,6 @@ function index(req, res, next) {
     res.render('users/index', { users, name: req.query.name, sortKey });
   });
 }
-
-// function addSong(req, res, next) {
-//   const song = new Song(req.body.song)
-//   console.log('look here', song)
-//   song.save(function(err) {
-//     if (err) return next(err);
-//     res.redirect('/users');
-//   });
-// }
-
-// function delSong(req, res) {
-//   Song.findByIdAndDelete(req.params.id, function(err) {
-//     res.redirect('/users');
-//   });
-// }
 
 function addSong(req, res) {
   User.findById(req.params.id, function(err, user) {
@@ -49,6 +35,16 @@ function delSong(req, res) {
   User.findOne({'songs._id': req.params.id}, function(err, user) {
     const songSubdoc = user.songs.id(req.params.id);
     songSubdoc.remove();
+    user.save(function(err) {
+      res.redirect('/users');
+    });
+  });
+}
+
+function update(req, res) {
+  User.findOne({'songs._id': req.params.id}, function(err, user) {
+    const songSubdoc = user.songs.id(req.params.id);
+    songSubdoc.text = req.body.text;
     user.save(function(err) {
       res.redirect('/users');
     });

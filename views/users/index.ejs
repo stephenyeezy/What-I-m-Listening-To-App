@@ -54,11 +54,15 @@
                     <form action="/songs/<%=song._id%>?_method=DELETE" method="POST">
                       <button type="submit">Delete</button>
                     </form>
+                    <form action="/songs/<%= song._id %>?_method=PUT" method="POST">
+                      <input name="text" value="<%= song.text %>">
+                      <button type="submit">Update Song</button>
+                    </form>                    
                   </li>
                 <% }) %>
               </ul>
               <!-- Add Dynamic UI form below this line -->
-              <% if (user._id.equals(user && user._id)) { %>
+              <% if (user._id.equals(user && user.id)) { %>
                   <form action="users/<%= user._id %>/songs" method="POST">
                     <input type="text" name="text">
                     <button type="submit">Add Song</button>
