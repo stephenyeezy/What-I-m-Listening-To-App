@@ -6,6 +6,14 @@ Webabb for sharing and discovering new music!
 ![Imgur](https://i.imgur.com/L7TTqoA.png)
 ![Imgur](https://i.imgur.com/Pz6Brfk.png)
 
+## Technology Used
+* Node JS
+* Express
+* MongoDB
+* Mongoose
+* HTML/CSS
+
+
 ## Getting Started
 
 Click link to deploy app and start sharing!
