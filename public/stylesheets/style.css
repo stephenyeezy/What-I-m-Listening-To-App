@@ -1,24 +1,30 @@
 body {
-  font: 14px "Helvetica", Arial, sans-serif;
   display: block;
+  padding: 20px;
+  color: #ff465e;
+  background-image: url("https://megleechin.com/sites/megleechin.com/files/image/Crowd.jpg");
+  background-size: 100% 100%;
 }
 
 .header {
+  font-family: 'Arial', Arial, sans-serif;
   font-size: 50px;
-  padding: 0;
+  font-weight: bold;
+  vertical-align: middle;
 }
 
 .text-column {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Arial Narrow', Arial, sans-serif;
   font-size: 35px;
+  font-weight: normal;
 }
 
-.share {
-  color: red;
+.music {
+  color: white;
 }
 
-.discover {
-  color: red;
+.new {
+  color: white;
 }
 
 .login {
@@ -29,9 +35,10 @@ body {
 	font-size: 15px;
   padding: 15px 15px;
   box-shadow: 0 1px 2px black;
-  position: fixed;
-  top: 0;
-  right: 0;
+  position: absolute;
+  top: 4.5vh;
+  right: 1vw;
+  background-color: white;
 }
 
 .google {
@@ -46,7 +53,32 @@ body {
   vertical-align: middle;
 }
 
-#users {
-  border: 10px solid black;
+input[type=text] {
+  border: none;
+  border-bottom: 2px solid rgb(148, 148, 148);
+  width: 100%;
+}
+
+button[type=submit] {
+  background-color: #ff465e;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  padding: 15px 15px;
+  text-decoration: none;
+  margin: 5px 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.userContainer {
+  background-color: white;
+  color: black;
+  font-weight: normal;
+}
+
+.user-name {
+  font-size: 40px;
+  vertical-align: middle;
   padding: 10px;
 }
