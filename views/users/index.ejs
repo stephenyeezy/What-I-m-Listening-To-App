@@ -53,12 +53,14 @@
           <% } else { %>
             <img src="https://image.flaticon.com/icons/svg/860/860784.svg">
           <% } %>
+          <a href="/details">
             <span class="user-name"><%= u.name %></span>
+          </a>
         </div>
         <div>
           <% u.songs.forEach(function(song) { %>
             <%= song.text %><br>
-            <% if (user._id.equals(u._id)) { %>
+            <% if (user && user._id.toString() === u._id.toString()) { %>
               <form action="/songs/<%=song._id%>?_method=DELETE" method="POST">
                 <button type="submit">D E L E T E &nbsp; S O N G</button>
               </form>
@@ -71,7 +73,7 @@
           <%})%>
         
           <!-- Add Dynamic UI form below this line -->
-          <% if(user._id.equals(u._id)) { %>
+          <% if(user && user._id.toString() === u._id.toString()) { %>
           <div>
             <form action="users/<%= u._id %>/songs" method="POST">
               <input type="text" name="text">
