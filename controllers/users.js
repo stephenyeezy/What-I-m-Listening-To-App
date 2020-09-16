@@ -1,11 +1,13 @@
 const User = require('../models/user');
 const Song = require('../models/user');
+const Comment = require('../models/user');
 
 module.exports = {
   index,
   addSong,
   delSong,
-  update
+  update,
+  addComment
 };
 
 function index(req, res, next) {
@@ -22,7 +24,6 @@ function index(req, res, next) {
 function addSong(req, res) {
   User.findById(req.params.id, function(err, user) {
     const song = req.body;
-    console.log('here', song)
     user.songs.push(song)
     user.save(function(err) {
       res.redirect('/users');
@@ -45,6 +46,16 @@ function update(req, res) {
     const songSubdoc = user.songs.id(req.params.id);
     if (!user._id.equals(req.user.id)) return res.redirect('/users')
     songSubdoc.text = req.body.text;
+    user.save(function(err) {
+      res.redirect('/users');
+    });
+  });
+}
+
+function addComment(req, res) {
+  User.findById(req.params.id, function(err, user) {
+    const comment = req.body;
+    user.comments.push(comment)
     user.save(function(err) {
       res.redirect('/users');
     });

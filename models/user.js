@@ -6,11 +6,18 @@ var songSchema = new mongoose.Schema({
   timestamps: true
 });
 
+var commentSchema = new mongoose.Schema({
+  text: String
+}, {
+  timestamps: true
+});
+
 var userSchema = new mongoose.Schema({
   name: String,
   email: String,
   avatar: String,
   songs: [songSchema],
+  comments: [commentSchema],
   googleId: String
 }, {
   timestamps: true
