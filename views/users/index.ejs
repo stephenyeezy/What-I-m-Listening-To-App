@@ -46,18 +46,19 @@
       </form>
     <section class="userContainer">
       <div class="w3-panel w3-card">
-        <p>
-        <% users.forEach(function(user) { %>
-          <% if (user.avatar) { %>
-            <img src="<%= user.avatar %>" alt="avatar" width="50">
+        <div>
+        <% users.forEach(function(u) { %>
+          <% if (u.avatar) { %>
+            <img src="<%= u.avatar %>" alt="avatar" width="50">
           <% } else { %>
             <img src="https://image.flaticon.com/icons/svg/860/860784.svg">
           <% } %>
-            <span class="user-name"><%= user.name %></span>
-        </p>
-        <p>
-          <% user.songs.forEach(function(song) { %>
-            <%= song.text %>
+            <span class="user-name"><%= u.name %></span>
+        </div>
+        <div>
+          <% u.songs.forEach(function(song) { %>
+            <%= song.text %><br>
+            <% if (user._id.equals(u._id)) { %>
               <form action="/songs/<%=song._id%>?_method=DELETE" method="POST">
                 <button type="submit">D E L E T E &nbsp; S O N G</button>
               </form>
@@ -65,17 +66,19 @@
                 <input type="text" name="text">
                 <button type="submit">U P D A T E &nbsp; S O N G</button>
               </form>                    
-          <% }) %>
-        </p>
-        <p>
+          <% } %>
+        </div>
+          <%})%>
+        
           <!-- Add Dynamic UI form below this line -->
-          <% if (user._id.equals(user && user.id)) { %>
-            <form action="users/<%= user._id %>/songs" method="POST">
+          <% if(user._id.equals(u._id)) { %>
+          <div>
+            <form action="users/<%= u._id %>/songs" method="POST">
               <input type="text" name="text">
               <button type="submit">A D D &nbsp; S O N G</button>
             </form>
+          </div>
           <% } %>
-        </p>
         <% }) %>
       </div>
     </section>
