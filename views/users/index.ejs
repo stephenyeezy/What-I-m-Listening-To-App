@@ -68,11 +68,10 @@
                 <input type="text" name="text">
                 <button type="submit">U P D A T E &nbsp; S O N G</button>
               </form>                    
-          <% } %>
+            <% } %>
         </div>
           <%})%>
         <hr>
-          <!-- Add Dynamic UI form below this line -->
           <% if(user && user._id.toString() === u._id.toString()) { %>
           <div>
             <form action="users/<%= u._id %>/songs" method="POST">
@@ -82,10 +81,12 @@
           </div>
           <% } %>
           <div>
+            <% u.comments.forEach(function(comment) { %>
+              <%= comment.text %><br><%})%>
             <form action="users/<%= u._id %>/comments" method="POST">
               <input type="text" name="text">
               <button type="submit">C O M M E N T</button>
-            </form>                    
+            </form>   
           </div>
         <% }) %>
       </div>

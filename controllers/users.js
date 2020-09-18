@@ -56,6 +56,7 @@ function addComment(req, res) {
   User.findById(req.params.id, function(err, user) {
     const comment = req.body;
     user.comments.push(comment)
+    console.log(comment, 'here')
     user.save(function(err) {
       res.redirect('/users');
     });
