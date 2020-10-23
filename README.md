@@ -1,5 +1,5 @@
 # What I'm Listening To
-Webabb for sharing and discovering new music!
+Webapp for sharing and discovering new music!
 
 ## Screenshots
 ![Imgur](https://i.imgur.com/lGiGjE1.png)
